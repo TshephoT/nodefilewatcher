@@ -1,6 +1,8 @@
 const fs = require("fs/promises");
 
 (async () => {
+    const length = 0;
+
     const createFile = async (path) => {
         try {
             const existingFileHandle = await fs.open(path, "r");
@@ -36,6 +38,18 @@ const fs = require("fs/promises");
         }
     }
 
+
+    // Test
+    const copyText = async (path, ) => {
+        try {
+            const copyTheText = await fs.open(path, "a");
+            copyTheText.write()
+        } catch (err) {
+            
+        }
+    }
+
+
     const deleteFile = async (path) => {
         try {
             await fs.unlink(path);
@@ -49,13 +63,82 @@ const fs = require("fs/promises");
     }
 
     // commands
+    const READ_FILE = "read a file"
     const CREATE_FILE = "create a file";
     const RENAME_FILE = "rename the file"
     const ADD_TO_FILE = "add to the file"
-    const DELETE_FILE = "delete the file";
+    const DELETE_FILE = "delete the file"
 
-    const commandFileHandler = await fs.open("./command.txt", "r")
-    const watcher = fs.watch("./");
+    //  Standard Transaction Record - File specification data
+    const recordIdentifier = "";
+
+
+
+
+    const originalUserBranch = "";
+    const originalNominatedAccountNumber = "";
+    const userCode = "";
+    const originalSequenceNumber = "";
+    const originalHomingBranch = "";
+    const originalHomingAccountNumber = "";
+    const originalAccountType = "";
+    const originalAmount = "";
+    const originalActionDate = "";
+    const orignalClassEntry = "";
+    const originalTaxCode = "";
+    const reasonForUnpaid = "";
+    const filler = "";
+    const originalUserReference = "";
+    const originalHomingAccountName = "";
+    const newBrunchNumber = "";
+    const newAccountNumber = "";
+    const newAccountType = "";
+    const newSequenceNumber = "";
+    const numberOfTimeRedirected = "";
+    const originalHomingInstitution = "";
+    const twelveFiller = "";
+
+    //  Consolidation Record - File specification data
+    const consolidatedRecordIdentifier = "";
+    const bankSuspenseAccountBranch = "";
+    const bankSuspenseAccountNumber = "";
+    const consolidatedSequenceNumber = userCode + 1
+    const fourFiller = "";
+    const batchReferenceInputCenter = "";
+    const submittedBankMemberNumber = "";
+    const originalTapeGenerationNumber = "";
+    const numberOfUnpaidTransactions = "";
+    const nineFiller = "";
+    const usersNominatedAccountName = "";
+    const thirtySixFiller = "";
+    const homingInstitution = "";
+    
+    //  Control Record - File specification data
+    const controlIdentifier = "";
+    const outPutDate = "";
+    const serviceType = "";
+    const subServiceType = "";
+    const memberNumber = "";
+    const numberOfTransactionFiles = "";
+    const numberOfCreditTransactions = "";
+    const numberOfDebitTransactions = "";
+    const valueOfCreditRecords = "";
+    const valueOfDebitRecords = "";
+    const hashTotal = "";
+    const nintyFiler = ""; 
+
+    //  End of File Record - File specifications
+    const endOfRecordIdentifier = "";
+    const processingDate = "";
+    const userDestinataion = "";
+    const numberOfRecords = "";
+    const sourceIdentifier = "";
+    const encryptedWorkingKey = "";
+    nintyFourFiller = 
+
+
+    const commandFileHandler = await fs.open("./command.txt", "r");
+    const watcher = fs.watch("./ACB_EXAMPLE_TEST0270.txt");
 
     commandFileHandler.on("change", async () => {
         // get the file size 
@@ -88,6 +171,14 @@ const fs = require("fs/promises");
             const filePath = command.substring(ADD_TO_FILE.length + 1, _idx);
             const fileContent = command.substring(_idx, 15);
             addToFile(filePath, fileContent);
+        }
+
+        if (command.includes("copy text")) {
+            const startColumn = 7; // Starting position of the desired column
+            const endColumn = 14; // Ending position of the desired column
+            const extractedData = row.substring(startColumn, endColumn).trim(); // Extracting the data within the specified columns
+            console.log(extractedData);
+            copyText(path)
         }
 
         // rename the file
